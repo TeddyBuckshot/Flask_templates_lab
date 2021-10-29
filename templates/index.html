@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+    <form action="/events" method="post">
+        <label for="date">Date of Event</label>
+        <input type="date"  min="date" max="2024-01-01" name="date" id="date">
+        <br>
+        <label for="name">Event Name</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="no_of_guests">Number of Guests</label>
+        <input type="number" name="no_of_guests", min='1', id="no_of_guests">
+        <br>
+        <label for="room_location">Room Number</label>
+        <input type="number" name="room_location", min='1', id="room_location">
+        <br>
+        <label for="description">Event Description</label>
+        <input type="text" name="description", id="description">
+        <br>
+        <label for="recurring">Is this a reccuring event?</label>
+        <input type="checkbox" name="recurring" id="recurring">
+        <input type="submit" value="Add Event">
+    </form>
+
+    <h1>Events Planner</h1>
+        {% for event in events %}
+            <div>
+                <ul>
+                    <li> {{ event.name }} </li>
+                    <li> {{ event.date }} </li>
+                    <li> {{ event.no_of_guests }} </li>
+                    <li> {{ event.room_location }} </li>
+                    <li> {{ event.description }} </li>
+                    <li> {{ event.recurring }} </li>
+                </ul>
+            </div>
+        {% endfor %}
+    {% endblock %}
